@@ -2,11 +2,46 @@
 <html lang="en-US">
 
 <head>
-    <meta charset = "UTF-8"/>
-    <link href = "./assets/style.css" rel = "stylesheet"/>
+    <meta charset="UTF-8" />
+    <link href="./assets/style.css" rel="stylesheet" />
     <title>Coding Quiz</title>
 </head>
 
 <body>
+    <!--high scores and timer-->
+    <header>
+        <button>View Highscores</button>
+        <p class="timer-count">Timer</p>
+    </header>
+    <!--quiz intro-->
+    <div>
+        <h1 class="start-screen">Hit Start to Begin to Play</h1>
+        <button id="start-button">Start</button>
+    </div>
+        <!--main quiz stuff-->
+    <main>
+        <section id="questions">
+            <h2>QuestionsPlaceHolder</h2>
+            <ul>
+                <li><button>AnswerA</button></li>
+                <li><button>AnswerB</button></li>
+                <li><button>AnswerC</button></li>
+                <li><button>AnswerD</button></li>
+            </ul>
+        </section>
+        <!--done with quiz-->
+        <section class = "quiz-complete">
+            <h2>Quiz Complete</h2>
+            <p>Your Score: 00</p>
+            <form class = "initials"></form>
+        </section>
+        <!-- high score page-->
+        <section class = "highscores">
+            <ol>
+                <li>initial and score</li>
+            </ol>
+        </section>
+
+    </main>
 
 </body>
