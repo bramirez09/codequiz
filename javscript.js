@@ -73,7 +73,7 @@ function timerDisplay() {
 function  checker(userOption) {
     let userSolution = userOption.innerHTML;
     let question = document.querySelector(".questions")[questionIndex];
-    let options = question.querySelectorAll(".option-div");
+    let options = question.querySelectorAll(".answer-options");
 //correct answer
 if (userSolution === quizArray[questionIndex].correct){
     userOption.classList.add("correct");
