@@ -14,34 +14,39 @@
         <p class="timer-count">Timer</p>
     </header>
     <!--quiz intro-->
-    <div>
-        <h1 class="start-screen">Hit Start to Begin to Play</h1>
-        <button id="start-button">Start</button>
-    </div>
+
         <!--main quiz stuff-->
     <main>
-        <section id="questions">
-            <h2>QuestionsPlaceHolder</h2>
-            <ul>
-                <li><button>AnswerA</button></li>
-                <li><button>AnswerB</button></li>
-                <li><button>AnswerC</button></li>
-                <li><button>AnswerD</button></li>
-            </ul>
+        <div class = "start-screen" id = "start-screen" >
+            <h1>Hit Start to Begin to Play</h1>
+            <button id="start-button">Start</button>
+        </div>
+        <section id="quiz-holder" class = "hide">
+            <a class = "questions"></a>
+            <p class = "answer-options"></p>
         </section>
         <!--done with quiz-->
-        <section class = "quiz-complete">
+        <div class = "quiz-complete">
             <h2>Quiz Complete</h2>
             <p>Your Score: 00</p>
-            <form class = "initials"></form>
-        </section>
+            <form class = "enter-initials">
+                <input placeholder = "initials" id = "initials" />
+                <button id = "submit">Submit</button>
+            </form>
+            <button id = "restart">restart</button>
+        </div>
+        <div class = "display-initials">
+
+        </div>
         <!-- high score page-->
-        <section class = "highscores">
+        <div class = "highscores">
             <ol>
                 <li>initial and score</li>
             </ol>
-        </section>
+        </div>
 
     </main>
+
+    <script src = "./javscript.js"></script>
 
 </body>
