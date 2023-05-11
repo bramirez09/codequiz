@@ -47,7 +47,7 @@ function timerDisplay() {
     function quizMaker() {
         //get current question object from array
         var currentQuestion = quizArray[questionIndex];
-        questionIndex = questionIndex + 1 ;
+
 
         //update a line with current question
         var titleEl = document.querySelector(".questions");
@@ -63,17 +63,13 @@ function timerDisplay() {
 
         // //clear out old question choices
         // choicesEl.innerHTML = "";
-
-        // console.log(quizArray[questionIndex].question)
-        // questionIndex = questionIndex + 1 ;
-
     }
 
     //check answers
 function  checker(userOption) {
     let userSolution = userOption.innerHTML;
-    let question = document.querySelector(".questions")[questionIndex];
-    let options = question.querySelectorAll(".answer-options");
+    let question = document.querySelector(".questions");
+    let options = question.querySelector(".answer-options");
 //correct answer
 if (userSolution === quizArray[questionIndex].correct){
     userOption.classList.add("correct");
@@ -88,8 +84,12 @@ else{
         }
     })
 }
+    questionIndex = questionIndex + 1 ;
 }
 
+render() {
+    
+}
 
 
     // questions
