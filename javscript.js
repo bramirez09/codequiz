@@ -1,6 +1,5 @@
 //variables
 var timerElement = document.querySelector(".timer-count")
-var secondsLeft = 10;
 const startScreen = document.getElementById("start-screen")
 let startButton = document.getElementById("start-button")
 let restartButton = document.getElementById("restart")
@@ -10,12 +9,6 @@ let choicesEl = document.querySelector(".answer-options")
 let highScores = document.getElementById("highscores")
 let quizComplete = document.getElementById("quiz-complete")
 var questionIndex = 0
-
-//only display start screen
-// window.onload = () => {
-//     startScreen.classList.remove ("hide");
-//     quizHolder.classList.add("hide");
-// }
 
 //start button event listener
 startButton.addEventListener("click", start);
@@ -29,17 +22,20 @@ function start() {
 }
 // //timer
 function timerDisplay() {
+    var timeLeft = 25;
     // Sets interval in variable
-    timerElement = setInterval(function () {
-        secondsLeft--;
-        timerElement.textContent = secondsLeft;
-
-        // if (secondsLeft === 0) {
-        //     // Stops execution of action at set interval
-        //     clearInterval(timerInterval);
-     }
-
-    , 1000);
+    var timeInterval = setInterval(function () {
+        if (timeLeft > 1) {
+            timerElement.textContent = timeLeft + "seconds remaining";
+            timeLeft--;
+        } else if ( timeLeft === 1){
+            timerElement.textContent = timeLeft + "second remaining";
+            timeLeft--;
+        } else {
+            timerElement.textContent = "";
+        clearInternal(timeInterval); 
+        }
+     }, 1000);
     // //stop timer
     //     clearInterval(downdown);
     //     //disable the rest of the quiz answers
@@ -60,12 +56,10 @@ function timerDisplay() {
         //update p line with options
         var optionsEl = document.querySelector(".answer-options");
         optionsEl.textContent = currentQuestion.options;
-                //options
-        //         section.innerHTML += <><button class="option-div" onclick="checker(this)">${i.options[0]}</button>
-        //         <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
-        //         <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
-        //         <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
-        //         <button class="option-div" onclick="checker(this)">${i.options[4]}</button></>;
+        optionsEl.innerHTML=`<button class="option-div" onclick="checker(this)">${currentQuestion.options[0]}</button>
+                <button class="option-div" onclick="checker(this)">${currentQuestion.options[1]}</button>
+                <button class="option-div" onclick="checker(this)">${currentQuestion.options[2]}</button>
+                <button class="option-div" onclick="checker(this)">${currentQuestion.options[3]}</button></>`;
 
         // //clear out old question choices
         // choicesEl.innerHTML = "";
@@ -77,7 +71,7 @@ function timerDisplay() {
 
     //check answers
 function  checker(userOption) {
-    let userSolution = userOption.innerText;
+    let userSolution = userOption.innerHTML;
     let question = document.querySelector(".questions")[questionIndex];
     let options = question.querySelectorAll(".option-div");
 //correct answer
