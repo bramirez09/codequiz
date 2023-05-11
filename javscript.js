@@ -9,6 +9,8 @@ let choicesEl = document.querySelector(".answer-options")
 let highScores = document.getElementById("highscores")
 let quizComplete = document.getElementById("quiz-complete")
 var questionIndex = 0
+var scoreCount = 0
+var timeLeft = 25;
 
 //start button event listener
 startButton.addEventListener("click", start);
@@ -22,7 +24,6 @@ function start() {
 }
 // //timer
 function timerDisplay() {
-    var timeLeft = 25;
     // Sets interval in variable
     var timeInterval = setInterval(function () {
         if (timeLeft > 1) {
@@ -36,12 +37,6 @@ function timerDisplay() {
             clearInternal(timeInterval);
         }
     }, 1000);
-    // //stop timer
-    //     clearInterval(downdown);
-    //     //disable the rest of the quiz answers
-    //     options.forEach((element)=>{
-    //     element.disabled = true;
-    // });
 
 }
 function quizMaker() {
@@ -70,7 +65,7 @@ function checker(userOption) {
     let userSolution = userOption.innerHTML;
     let question = document.querySelector(".questions");
     let options = question.querySelector(".answer-options");
-    for (var i = 0; i < quizArray.length; i++)
+
         //correct answer
         if (userSolution === quizArray[questionIndex].correct) {
             userOption.classList.add("correct");
@@ -79,14 +74,15 @@ function checker(userOption) {
         //incorrect answer
         else {
             userOption.classList.add("incorrect");
+            timeLeft - 5;
             options.forEach((element) => {
                 if (element.innterText == quizArray[questionIndex].correct) {
                     element.classList.add("correct");
-                    timeLeft - 5;
                 }
             })
         }
     questionIndex = questionIndex + 1;
+    quizMaker();
 }
 
 // questions
