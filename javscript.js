@@ -36,7 +36,8 @@ function timerDisplay() {
             timeLeft--;
         } else {
             timerElement.textContent = "";
-            showScore;
+            clearInterval(timeInterval)
+            showScore();
         }
     }, 1000);
 
@@ -86,19 +87,29 @@ function checker(userOption) {
         })
     }
     questionIndex = questionIndex + 1;
-    quizMaker();
+    //if (quizIndex < quizArray and call function to end quiz)
+    if (questionIndex < quizArray.length) {
+        quizMaker();
+    } else {
+        timerElement.classList.add("hide");
+        showScore();
+    }
+    //quizMaker();
 }
 
-//
 
 function showScore() {
     let yourscore = document.querySelector(".your-score")
-    yourscore.textContent = "Your score : " + userScore;
+    yourscore.textContent = "Your score : " + scoreCount;
     console.log("userscore", userScore)
 
-    let inputInitials = document.querySelector(".enter-initials");
+    let inputInitials = document.querySelector(".quiz-complete");
+    inputInitials.classList.remove("hide");
+
+    quizHolder.classList.add("hide");
 
 }
+
 
 // questions
 const quizArray = [
@@ -129,4 +140,4 @@ const quizArray = [
     }
 ];
 
-
+// restartButton.addEventListener("click", start());

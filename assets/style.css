@@ -39,6 +39,9 @@ main {
     display: none;
 }
 
-.quiz-complete, .highscores {
-    display : none;
+button {
+    background-color: whitesmoke;
+    border: 2px solid;
+    border-radius: 2px;
+    padding: 5px;
 }
