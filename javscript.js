@@ -8,6 +8,8 @@ let quizQuestions = document.getElementById("questions")
 let choicesEl = document.querySelector(".answer-options")
 let highScores = document.getElementById("highscores")
 let quizComplete = document.getElementById("quiz-complete")
+let userScore = document.querySelector(".your-score")
+let enterInitials = document.querySelector("enter-initials")
 var questionIndex = 0
 var scoreCount = 0
 var timeLeft = 25;
@@ -34,7 +36,7 @@ function timerDisplay() {
             timeLeft--;
         } else {
             timerElement.textContent = "";
-            clearInternal(timeInterval);
+            showScore;
         }
     }, 1000);
 
@@ -56,33 +58,46 @@ function quizMaker() {
                 <button class="option-div" onclick="checker(this)">${currentQuestion.options[2]}</button>
                 <button class="option-div" onclick="checker(this)">${currentQuestion.options[3]}</button></>`;
 
-    // //clear out old question choices
-    // choicesEl.innerHTML = "";
 }
 
 //check answers
 function checker(userOption) {
     let userSolution = userOption.innerHTML;
-    let question = document.querySelector(".questions");
-    let options = question.querySelector(".answer-options");
+    //let question = document.querySelector(".questions");
+    //console.log("question",question)
+    let buttons = document.querySelector(".answer-options").children;
+    let options = Array.from(buttons)
+    console.log("options", options)
 
-        //correct answer
-        if (userSolution === quizArray[questionIndex].correct) {
-            userOption.classList.add("correct");
-            scoreCount++;
-        }
-        //incorrect answer
-        else {
-            userOption.classList.add("incorrect");
-            timeLeft - 5;
-            options.forEach((element) => {
-                if (element.innterText == quizArray[questionIndex].correct) {
-                    element.classList.add("correct");
-                }
-            })
-        }
+
+    //correct answer
+    if (userSolution === quizArray[questionIndex].correct) {
+        userOption.classList.add("correct");
+        scoreCount++;
+    }
+    //incorrect answer
+    else {
+        userOption.classList.add("incorrect");
+        timeLeft -= 5;
+        options.forEach((element) => {
+            if (element.innterText == quizArray[questionIndex].correct) {
+                element.classList.add("correct");
+            }
+        })
+    }
     questionIndex = questionIndex + 1;
     quizMaker();
+}
+
+//
+
+function showScore() {
+    let yourscore = document.querySelector(".your-score")
+    yourscore.textContent = "Your score : " + userScore;
+    console.log("userscore", userScore)
+
+    let inputInitials = document.querySelector(".enter-initials");
+
 }
 
 // questions
